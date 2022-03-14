@@ -50,6 +50,11 @@ CKKSVector::CKKSVector(const shared_ptr<TenSEALContext>& ctx,
     this->load(vec);
 }
 
+CKKSVector::CKKSVector(const shared_ptr<TenSEALContext> &ctx, const seal::Ciphertext &ciphertext) {
+    this->link_tenseal_context(ctx);
+    std::cout << 1111 << std::endl;
+}
+
 CKKSVector::CKKSVector(const string& vec) { this->load(vec); }
 
 CKKSVector::CKKSVector(const TenSEALContextProto& ctx,

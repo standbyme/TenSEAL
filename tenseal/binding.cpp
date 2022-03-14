@@ -879,6 +879,16 @@ void bind_bfv_tensor(py::module &m) {
         .def("transpose_", &BFVTensor::transpose_inplace);
 }
 
+int add(int i, int j) {
+    return i + j;
+}
+
+std::shared_ptr<CKKSVector> iii(const shared_ptr<TenSEALContext> &ctx, const seal::Ciphertext &ciphertext) {
+    std::cout << 1111 << std::endl;
+
+    return CKKSVector::Create(ctx, ciphertext);
+}
+
 PYBIND11_MODULE(_tenseal_cpp, m) {
     m.doc() = "Library for doing homomorphic encryption operations on tensors";
 
@@ -895,4 +905,6 @@ PYBIND11_MODULE(_tenseal_cpp, m) {
     bind_ckks_vector(m);
     bind_ckks_tensor(m);
     bind_bfv_tensor(m);
+
+    m.def("addbababa", &iii, "A function that adds two numbers");
 }
